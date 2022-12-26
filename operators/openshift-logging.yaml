@@ -51,7 +51,7 @@ spec:
 apiVersion: logging.openshift.io/v1
 kind: ClusterLogging
 metadata:
-  name: logging-instance
+  name: instance
   namespace: openshift-logging
 spec:
   collection:
