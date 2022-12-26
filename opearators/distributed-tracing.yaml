@@ -19,7 +19,7 @@ metadata:
 spec:
   channel: stable
   installPlanApproval: Automatic
-  name: openshift-distributed-tracing
+  name: jaeger-product
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   startingCSV: jaeger-operator.v1.39.0-3
