@@ -25,3 +25,35 @@ spec:
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   startingCSV: cluster-logging.5.5.5
+---
+apiVersion: logging.openshift.io/v1
+kind: ClusterLogForwarder
+metadata:
+  name: instance
+  namespace: openshift-logging
+spec:
+  outputs:
+    - name: log-shipping-graylog
+      syslog:
+        rfc: RFC5424
+        severity: informational
+      type: syslog
+      url: 'tcp://graylog.apps.myazure.online:1514'
+  pipelines:
+    - inputRefs:
+        - audit
+        - infrastructure
+        - application
+      name: enable-default-log-store
+      outputRefs:
+        - log-shipping-graylog
+---
+apiVersion: logging.openshift.io/v1
+kind: ClusterLogging
+metadata:
+  name: logging-instance
+  namespace: openshift-logging
+spec:
+  collection:
+    type: fluentd
+  managementState: Managed
