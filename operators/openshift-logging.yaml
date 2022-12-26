@@ -41,7 +41,6 @@ spec:
       url: 'tcp://graylog.apps.myazure.online:1514'
   pipelines:
     - inputRefs:
-        - audit
         - infrastructure
         - application
       name: enable-default-log-store
