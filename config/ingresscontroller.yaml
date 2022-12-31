@@ -1,0 +1,19 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: default
+  namespace: openshift-ingress-operator
+spec:
+  clientTLS:
+    clientCA:
+      name: ''
+    clientCertificatePolicy: ''
+  defaultCertificate:
+    name: ingress-tls
+  httpCompression: {}
+  httpEmptyRequestsPolicy: Respond
+  httpErrorCodePages:
+    name: ''
+  replicas: 1
+  tuningOptions: {}
+  unsupportedConfigOverrides: null

@@ -1,0 +1,15 @@
+apiVersion: config.openshift.io/v1
+kind: APIServer
+metadata:
+  name: cluster
+spec:
+  audit:
+    profile: Default
+  encryption:
+    type: aescbc
+  servingCerts:
+    namedCertificates:
+      - names:
+          - api.ocp4.myazure.online
+        servingCertificate:
+          name: api-tls
