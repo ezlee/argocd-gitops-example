@@ -13,6 +13,6 @@ data:
           resources:
             requests:
               storage: 40Gi
-      externalLables:
+      externalLabels:
         cluster_id: ocp4
     enableUserWorkerload: true
