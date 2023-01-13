@@ -1,0 +1,45 @@
+allowHostDirVolumePlugin: false
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegeEscalation: false
+allowPrivilegedContainer: false
+allowedCapabilities:
+- NET_BIND_SERVICE
+apiVersion: security.openshift.io/v1
+defaultAddCapabilities: null
+fsGroup:
+  type: RunAsAny
+groups: []
+kind: SecurityContextConstraints
+metadata:
+  annotations:
+    kubernetes.io/description: restricted-v2 denies access to all host features and
+      requires pods to be run with a UID, and SELinux context that are allocated to
+      the namespace. This is the most restrictive SCC and it is used by default for
+      authenticated users. On top of the legacy 'restricted' SCC, it also requires
+      to drop ALL capabilities and does not allow privilege escalation binaries. It
+      will also default the seccomp profile to runtime/default if unset, otherwise
+      this seccomp profile is required. This is a customized restricted-v2 scc.
+  name: restricted-v2-with-exception
+priority: null
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+- ALL
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: RunAsAny
+seccompProfiles:
+- runtime/default
+supplementalGroups:
+  type: RunAsAny
+users: []
+volumes:
+- configMap
+- downwardAPI
+- emptyDir
+- persistentVolumeClaim
+- projected
+- secret

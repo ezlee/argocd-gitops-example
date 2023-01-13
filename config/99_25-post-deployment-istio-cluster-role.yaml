@@ -1,0 +1,177 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ctc-istiod-clusterrole-basic-istio-system-editor
+rules:
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - config.istio.io
+      - security.istio.io
+      - networking.istio.io
+      - authentication.istio.io
+      - rbac.istio.io
+      - telemetry.istio.io
+      - extensions.istio.io
+    resources:
+      - '*'
+  - verbs:
+      - get
+      - watch
+      - list
+      - update
+      - patch
+      - create
+      - delete
+    apiGroups:
+      - networking.istio.io
+    resources:
+      - workloadentries
+  - verbs:
+      - get
+      - watch
+      - list
+      - update
+      - patch
+      - create
+      - delete
+    apiGroups:
+      - networking.istio.io
+    resources:
+      - workloadentries/status
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ''
+    resources:
+      - pods
+      - nodes
+      - services
+      - namespaces
+      - endpoints
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - ingressclasses
+  - verbs:
+      - '*'
+    apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses/status
+  - verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+    apiGroups:
+      - ''
+    resources:
+      - configmaps
+  - verbs:
+      - create
+    apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - networking.x-k8s.io
+      - gateway.networking.k8s.io
+    resources:
+      - '*'
+  - verbs:
+      - update
+      - patch
+    apiGroups:
+      - networking.x-k8s.io
+      - gateway.networking.k8s.io
+    resources:
+      - '*'
+  - verbs:
+      - create
+      - update
+      - patch
+      - delete
+    apiGroups:
+      - gateway.networking.k8s.io
+    resources:
+      - gatewayclasses
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - ''
+    resources:
+      - secrets
+  - verbs:
+      - get
+      - list
+      - watch
+      - update
+      - patch
+    apiGroups:
+      - maistra.io
+    resources:
+      - servicemeshmemberrolls
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - route.openshift.io
+    resources:
+      - routes
+      - routes/custom-host
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - multicluster.x-k8s.io
+    resources:
+      - serviceexports
+  - verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - multicluster.x-k8s.io
+    resources:
+      - serviceimports
+  - verbs:
+      - update
+    apiGroups:
+      - ''
+    resources:
+      - pods/finalizers

@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ctc-istiod-clusterrole-basic-istio-system-editor-crb
+subjects:
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: svc.tibcodeploy
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ctc-istiod-clusterrole-basic-istio-system-editor
